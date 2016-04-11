@@ -1429,8 +1429,10 @@ var MQTT = (function (global) {
 			this.socket.onmessage = null;
 			this.socket.onerror = null;
 			this.socket.onclose = null;
-			if (this.socket.readyState === 1)
-				this.socket.close();
+			if(!cc.sys.isNative){
+                if (this.socket.readyState === 1)
+                    this.socket.close();
+            }
 			delete this.socket;           
 		}
 		
